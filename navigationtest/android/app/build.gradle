@@ -147,7 +147,7 @@ configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
         if(requested.group == 'com.android.support' && requested.name != 'multidex') {
-            details.uesVersion "${rootProject.ext.supportLibVersion}"
+            details.useVersion "${rootProject.ext.supportLibVersion}"
         }
     }
 }

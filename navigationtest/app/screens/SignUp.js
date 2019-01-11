@@ -1,13 +1,13 @@
 // @flow
 import * as React from 'react';
-import { View, TextInput, AsyncStorage } from 'react-native';
+import { View, TextInput, AsyncStorage, StyleSheet, Button } from 'react-native';
 import KEY from '../config';
 import { goToHome } from '../Navigation';
 
 type Props = {};
 
 type State = {
-	name: string,
+	username: string,
 	email: string,
 	password: string
 };
@@ -18,7 +18,7 @@ class SignUp extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
-			name: '',
+			username: '',
 			email: '',
 			password: ''
 		};
@@ -26,7 +26,7 @@ class SignUp extends React.Component<Props, State> {
 
 	login = async () => {
 		try{
-			await AsyncStorage.setItem(KEY);
+			await AsyncStorage.setItem('KEY', this.state.username);
 			goToHome();
 		}catch(err){
 			console.log(err);
@@ -36,11 +36,11 @@ class SignUp extends React.Component<Props, State> {
 
 	render() {
 		return(
-			<View style={styles.containcer}>
-				<TextInput style={styles.input} placeholder="Name" onChangeText={(name) => this.setState({name})} />
+			<View style={styles.container}>
+				<TextInput style={styles.input} placeholder="Name" onChangeText={(username) => this.setState({username})} />
 				<TextInput style={styles.input} placeholder="Email" onChangeText={(email) => this.setState({email})} />
 				<TextInput style={styles.input} placeholder="Password" onChangeText={(password) => this.setState({password})} />
-				<Button onPress={this.login}>Sign Up</Button>
+				<Button onPress={this.login} title="Sign Up"></Button>
 			</View>
 		)
 	}

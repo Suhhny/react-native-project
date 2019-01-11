@@ -1,9 +1,9 @@
 // @flow
 
-import React from 'react'
-import { View, StyleSheet, TextInput, Button, AsyncStorage } from 'react-native'
-import { goToHome } from './navigation'
-import KEY from './config'
+import * as React from 'react'
+import { View, StyleSheet, TextInput, Button } from 'react-native'
+import { goToHome } from '../Navigation'
+import KEY from '../config'
 
 type Props = {};
 
@@ -25,7 +25,7 @@ class SignIn extends React.Component<Props, State> {
 
 	login = async () => {
 		try{
-			await AsyncStorage.setItem(KEY);
+			AsyncStorage.setItem('KEY', this.state.username)
 			goToHome();
 		}catch(err){
 			console.log(err);
@@ -35,16 +35,18 @@ class SignIn extends React.Component<Props, State> {
 
 	render() {
 		return(
-			<View>
-				<TextInput placeholder="Username" onChangeText={(username) => this.setState({username})} />
-				<TextInput placeholder="Password" onChangeText={(password) => this.setState({password})} />
-				<Button onPress={this.login}>Sign In</Button>
+			<View style={styles.container}>
+				<TextInput style={styles.text} placeholder="Username" onChangeText={(username) => this.setState({username})} />
+				<TextInput style={styles.text} placeholder="Password" onChangeText={(password) => this.setState({password})} />
+				<Button style={styles.text} onPress={this.login} title="Sign In"></Button>
 			</View>
 		);
 	}
 
+}
+
 const styles = StyleSheet.create({
-	input: {
+	text: {
 		width: 350,
 		fontSize: 18,
 		fontWeight: '500',
@@ -60,6 +62,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	}
-})
+});
 
 export default SignIn;

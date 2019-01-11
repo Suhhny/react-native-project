@@ -27,28 +27,8 @@ export const goToAuth = () => Navigation.setRoot({
 	}
 })
 
-export const goToHome = () => Navigation.showOverlay({
+export const goToHome = () => Navigation.setRoot({
 	component: {
-		name: 'Home',
-		options: {
-			overlay: {
-				interceptTouchOutside: true
-			}
+		name: 'Home'
 		}
-	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -11,7 +11,7 @@ class Initial extends React.Component<Props> {
 
 	async componentDidMount() {
 		try{
-			const user = await AsyncStorage.getItem(KEY);
+			const user = await AsyncStorage.getItem('KEY');
 			if(user){
 				goToHome();
 			}else{
@@ -25,14 +25,14 @@ class Initial extends React.Component<Props> {
 
 	render() {
 		return(
-			<View style={style.container}>
-				<Text style={style.text}>Loading...</Text>
+			<View style={styles.container}>
+				<Text style={styles.text}>Loading...</Text>
 			</View>
 		);
 	}
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
