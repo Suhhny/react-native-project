@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Text, AsyncStorage, Button } from 'react-native';
+import { View, Text, AsyncStorage, Button, StyleSheet } from 'react-native';
 import { goToAuth } from '../Navigation';
 import KEY from '../config';
 
@@ -30,12 +30,20 @@ class Home extends React.Component<Props> {
 
 	render() {
 		return(
-			<View>
+			<View style={styles.container}>
 				<Text>안뇽</Text>
 				<Button onPress={this.logout} title='Sign Out'></Button>
 			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	}
+})
 
 export default Home;
