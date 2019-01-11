@@ -1,0 +1,3 @@
+rootProject.name = 'GoogleAnalytics'
+
+include ':app'

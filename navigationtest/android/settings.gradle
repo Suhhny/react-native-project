@@ -1,0 +1,6 @@
+rootProject.name = 'navigationtest'
+
+include ':app'
+
+include ':react-native-navigation';
+project(':react-native-navigation').projectDjr = new File(rootProject.projectDjr, '../node_modules/react-native-navigation/lib/android/app/')
